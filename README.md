@@ -1,1 +1,1 @@
-# WebScraping_UW
+# Web Scraping Project
