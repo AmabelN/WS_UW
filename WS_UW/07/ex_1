@@ -1,0 +1,62 @@
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
+
+import time
+import getpass
+import datetime
+
+# Init:
+gecko_path = 'C:\\Users\\Febian\\Downloads\\geckodriver'
+binary = FirefoxBinary('C:\\Program Files\\Mozilla Firefox\\firefox.exe')
+ser = Service(gecko_path)
+options = webdriver.firefox.options.Options()
+options.headless = False
+driver = webdriver.Firefox(options=options, service=ser, firefox_binary=binary)
+
+url = 'http://campuswire.com/signin'
+
+# Logging in CampusWire
+time.sleep(2)
+driver.get(url)
+time.sleep(2)
+username = driver.find_element(By.XPATH, '//input[@placeholder="Email"]')
+my_email = input('Please provide your email:')
+username.send_keys(my_email)
+time.sleep(2)
+password = driver.find_element(By.XPATH, '//input[@placeholder="password"]')
+my_pass = getpass.getpass('Please provide your password:')
+password.send_keys(my_pass)
+time.sleep(2)
+button = driver.find_element(By.XPATH, '//button[@type="submit"]')
+button.click()
+time.sleep(4)
+
+# Findind the DMs in campuswire
+chat = driver.find_element(
+    By.XPATH, '//button[contains(@class, "icon-btn") and span[text()="DMs"]]')
+chat.click()
+time.sleep(5)
+# finding the person in DMs
+name = 'Maciej Wysocki'
+bot_test_chat = driver.find_element(
+    By.XPATH, f"//ul[@class='dm-conversation-list']//h5[text()='{name}']")
+bot_test_chat.click()
+time.sleep(2)
+
+# send a python file
+python_file = 'C:\\Users\\Febian\\Downloads\\ws-lab\\ex_1.py'
+driver.find_element(By.XPATH, '//input[@type="file"]').send_keys(python_file)
+time.sleep(3)
+# Pressing enter:
+actions = ActionChains(driver)
+actions.send_keys(Keys.ENTER)
+actions.perform()
+
+time.sleep(10)
+
+# Close browser:
+driver.quit()
