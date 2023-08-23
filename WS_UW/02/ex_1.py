@@ -1,5 +1,4 @@
 # Amabel_Nabila
-# 455854
 
 import requests
 from bs4 import BeautifulSoup
