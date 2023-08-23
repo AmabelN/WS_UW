@@ -1,6 +1,4 @@
 # Amabel_Nabila
-# 455854
-
 from urllib import request
 import pandas as pd
 import requests
