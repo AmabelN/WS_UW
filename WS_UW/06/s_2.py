@@ -1,8 +1,5 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 # ## Amabel Nabila
-# ## 455854
+
 
 # In[1]:
 
