@@ -1,6 +1,4 @@
 # Amabel Nabila
-# 455854
-
 import requests
 import re
 
